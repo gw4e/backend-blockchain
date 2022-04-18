@@ -3,7 +3,7 @@
 
 [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
-A Decentralized Application is a piece of software that has its backend code running on a decentralized peer to peer network.  This project holds this backend and is the part that connects with a frontend to provide its necessary function (see ....).
+A Decentralized Application is a piece of software that has its backend code running on a decentralized peer to peer network.  This project holds this backend and is the part that connects with a [frontend](https://github.com/gw4e/frontend-blockchain) to provide its necessary function.
 
 ## Features
 Each backend nodes (here called miners) in the network will:
