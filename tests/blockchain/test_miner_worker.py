@@ -55,3 +55,26 @@ def test_stop(miner):
         except:
             pass
     assert miner.is_stopped()
+
+
+def test_pause(miner):
+    miner.start()
+    timeout = 4  # [seconds]
+    timeout_start = time.time()
+    while time.time() < timeout_start + timeout:
+        try:
+            assert miner.is_running()
+        except:
+            pass
+    assert miner.is_running()
+    miner.update_pause(1)
+    assert miner.get_miner_pause() == 1
+    assert miner.get_start_count() == 2
+    assert miner.get_stop_count() == 1
+    timeout_start = time.time()
+    while time.time() < timeout_start + timeout:
+        try:
+            assert miner.is_running()
+        except:
+            pass
+    assert miner.is_running()

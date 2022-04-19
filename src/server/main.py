@@ -176,6 +176,8 @@ def get_wallets():
 def describe_network():
     try:
         d = ServerContainer.get_instance().get_network().describe_network()
+        pause = ServerContainer.get_instance().get_miner().get_miner_pause()
+        d['pause'] = pause
         return success_response(d), 200
     except Exception as err:
         return error_response(str(err)), 500
@@ -217,7 +219,7 @@ def register_and_broadcast_nodes():
             ServerContainer.get_instance().get_network().register_and_broadcast_nodes(data["nodeUrl"])
         except Exception as err:
             return error_response(str(err)), 500
-        return success_response(None, f"Node added and broadcasted: {data['nodeUrl']}")
+        return success_response(None, f"Node added and broadcast: {data['nodeUrl']}")
     else:
         return error_response('Content-Type not supported!'), 415
 
@@ -293,6 +295,33 @@ def create_key():
         return success_response(d), 200
     except Exception as err:
         return error_response(str(err)), 500
+
+@app.route('/update_miner_pause', methods=['POST'])
+def update_miner_pause():
+    data = json.loads(request.data)
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':
+        data = json.loads(request.data)
+        try:
+            ServerContainer.get_instance().get_miner().update_pause(int(data["pause"]))
+        except Exception as err:
+            return error_response(str(err)), 500
+        return success_response(None, f"Miner pause updated with: {data['pause']}")
+    else:
+        return error_response('Content-Type not supported!'), 415
+
+
+@app.route('/get_miner_pause', methods=['GET'])
+def get_miner_pause():
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':
+        try:
+            value = ServerContainer.get_instance().get_miner().get_miner_pause()
+        except Exception as err:
+            return error_response(str(err)), 500
+        return success_response(value, f"")
+    else:
+        return error_response('Content-Type not supported!'), 415
 
 
 @app.after_request

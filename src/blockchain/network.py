@@ -117,6 +117,7 @@ class NetWork:
             return {
                 "status": BlockChain.UPDATED,
             }
+        self._blockchain.reset_source ();
         return {
             "status": BlockChain.NO_UPDATE,
         }

@@ -103,14 +103,14 @@ def test_manage_transaction(servers, client_2, client_cc):
             "nodeUrl": SERVER_CONFIG[1]['url']
         }))
         data = response.json()["message"]
-        assert data == f"Node added and broadcasted: {SERVER_CONFIG[1]['url']}"
+        assert data == f"Node added and broadcast: {SERVER_CONFIG[1]['url']}"
         url = f"{SERVER_CONFIG[1]['url']}/register-and-broadcast-nodes"
         #
         response = requests.request("POST", url, headers=NetWork.JSON_HEADER, data=json.dumps({
             "nodeUrl": SERVER_CONFIG[2]['url']
         }))
         data = response.json()["message"]
-        assert data == f"Node added and broadcasted: {SERVER_CONFIG[2]['url']}"
+        assert data == f"Node added and broadcast: {SERVER_CONFIG[2]['url']}"
 
     def assert_blockchains_network():
         url = f"{SERVER_CONFIG[0]['url']}/describe_network"
@@ -225,7 +225,7 @@ def test_manage_transaction(servers, client_2, client_cc):
             })
             return True
 
-        def check_transaction_has_been_broadcasted_to_other_nodes():
+        def check_transaction_has_been_broadcast_to_other_nodes():
             for server_config in SERVER_CONFIG:
                 server_url = f"{server_config['url']}/get_blockchain"
                 response = requests.request("GET", server_url, headers=NetWork.JSON_HEADER, data={})
@@ -236,9 +236,9 @@ def test_manage_transaction(servers, client_2, client_cc):
 
         # need to wait for the next steps of mining so that the client has enough money to make the transaction
         assert assert_func_with_timeout(wait_for_transaction_to_be_added, 30)
-        # assert transactions have been broadcasted to other nodes
+        # assert transactions have been broadcast to other nodes
         # Since the mining is stopped , we are sure that the transactions should be in the transactions pool
-        assert assert_func_with_timeout(check_transaction_has_been_broadcasted_to_other_nodes, 30)
+        assert assert_func_with_timeout(check_transaction_has_been_broadcast_to_other_nodes, 30)
 
     def check_for_added_transaction_in_all_blockchains():
         status = {}

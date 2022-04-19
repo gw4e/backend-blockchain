@@ -240,7 +240,7 @@ def test_register_and_broadcast_nodes(test_client, monkeypatch):
     assert calls_args[0] == {'method': 'POST', 'url': 'http://localhost:3002/register-node',
                              'dict': {'headers': {'Content-Type': 'application/json'},
                                       'data': '{"nodeUrl": "http://localhost:3002"}'}}
-    assert response.json["message"] == 'Node added and broadcasted: http://localhost:3002'
+    assert response.json["message"] == 'Node added and broadcast: http://localhost:3002'
 
 
 #
@@ -267,6 +267,13 @@ def test_status(test_client):
     result = response.json["result"]
     assert result["status"] == 'started'
     assert result["mining"]
+
+def test_update_pause(test_client):
+    response = test_client.post("/update_miner_pause", json={
+        "pause": 5
+    })
+    result = response.json["message"]
+    assert result == "Miner pause updated with: 5"
 
 
 @pytest.mark.parametrize('blocks_length', [[1, 2]])

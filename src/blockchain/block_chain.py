@@ -743,6 +743,9 @@ class BlockChain():
     def set_observer(self, observer):
         self._observer = observer
 
+    def reset_source(self):
+        self._source_blockchain_id = self._id
+
     def update(self, new_chain: List[Block], new_pool_transactions: TransactionPool, source_blockchain_id: str):
         """
 

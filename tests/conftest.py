@@ -1,4 +1,5 @@
 import logging
+import os
 from datetime import date
 
 import Crypto
@@ -8,9 +9,16 @@ from dotenv import load_dotenv
 
 from src.blockchain.block_chain import BlockChain, Transaction, CreditCardTransaction
 
-load_dotenv()
 
-logging.basicConfig(format="%(asctime)s: %(message)s", level=logging.INFO, datefmt="%H:%M:%S")
+def setup_tests():
+    load_dotenv()
+    logging.basicConfig(format="%(asctime)s: %(message)s", level=logging.INFO, datefmt="%H:%M:%S")
+    if os.getenv("GENESIS_FILE_LOCATION") is None or len(os.getenv("GENESIS_FILE_LOCATION")) == 0:
+        raise Exception(
+            'You did not set the GENESIS_FILE_LOCATION environment variable in the .env file. See the readme')
+
+
+setup_tests()
 
 
 @pytest.fixture
