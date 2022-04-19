@@ -15,7 +15,7 @@ Each backend nodes (here called miners) in the network will:
 - Mine these transactions at a certain rate to add block of transactions in its blockchain.
   By selecting transactions and adding them to their block, miners create a block of transactions. To add this block of transactions to the blockchain, the block first needs a signature (also referred to as a ‘proof of work’). This signature is created by solving a mathematical problem that is unique to each block of transactions.
 - Ask for consensus. The term "consensus" means that all nodes in the network must agree on an identical version of the blockchain. In a way, the consensus mechanism of a blockchain is an internal and automatic audit of its network.
-
+- Each node mines blocks at a regular rate and the winner node is rewarded (see below the Mining section)
 
 ## Tech
 
