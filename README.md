@@ -5,6 +5,7 @@
 
 
 A Decentralized Application is a piece of software that has its backend code running on a decentralized peer to peer network.  This project holds this backend and is the part that connects with a [frontend](https://github.com/gw4e/frontend-blockchain) to provide its necessary function.
+Obviously a real blockchain implementation is far more complex than the one implemented :-)
 
 ## Features
 Each backend nodes (here called miners) in the network will:
@@ -120,7 +121,7 @@ it will always have the longest one. After 1 minute, of having nodes running , w
 
 ### Mining
 This implementation is of course a naive one and many problems still need to be solved.
-- A consensus algorithm is far more complex than the one implemented :-)
+- The consensus algorithm is far more complex than the one implemented :-)
 - How to manage different nodes running with different versions of this backend ? 
 - How to increase the complexity of the mining problem while nodes are running ?
 - Whenever a consensus is triggered, if a node see that the proposed blockchain is valid and longer that its own 
