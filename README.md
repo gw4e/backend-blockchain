@@ -120,9 +120,10 @@ it will always have the longest one. After 1 minute, of having nodes running , w
 
 ### Mining
 This implementation is of course a naive one and many problems still need to be solved.
+- A consensus algorithm is far more complex than the one implemented :-)
 - How to manage different nodes running with different versions of this backend ? 
 - How to increase the complexity of the mining problem while nodes are running ?
-- Whenever a consensus is triggered, if a node see that the,proposed blockchain is valid and longer that its own 
+- Whenever a consensus is triggered, if a node see that the proposed blockchain is valid and longer that its own 
 blockchain it should stop mining 
 - ...
 
