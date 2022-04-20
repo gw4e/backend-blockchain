@@ -1,7 +1,7 @@
 ## Pycotr Backend
 ### _A blockchain backend naive implementaion that helps me to learn what is blockchain_
 
-### Pycotr <img src="http://github.com/gw4e/frontend-blockchain/blob/main/public/images/brand-white.png?raw=true" data-canonical-src="http://github.com/gw4e/frontend-blockchain/blob/main/public/images/brand-white.png" width="30" height="30" /> BackEnd
+### Pycotr <img src="http://github.com/gw4e/frontend-blockchain/blob/main/public/images/brand-white.png?raw=true" data-canonical-src="http://github.com/gw4e/frontend-blockchain/blob/main/public/images/brand-white.png" width="18" height="18" /> BackEnd
 
 
 A Decentralized Application is a piece of software that has its backend code running on a decentralized peer to peer network.  This project holds this backend and is the part that connects with a [frontend](https://github.com/gw4e/frontend-blockchain) to provide its necessary features.
