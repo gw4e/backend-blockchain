@@ -83,7 +83,11 @@ def proof_work(self, difficulty: int):
 The majority decision is represented by the longest chain, which has the greatest proof-of-work effort invested in it. 
 All the nodes trust the longest chain in a blockchain without trusting each other directly.
 Building any block requires energy. The chain with the longest block needs the most power to create. The algorithm discards the shorter chains, 
-and the longest chain is adopted.
+and the longest chain is adopted. In this implementation the whole blockchain could override an existing blockchain and obvioulsy, this is not very efficient.
+Moreover, the whole blocks are considered as confirmed. There is no implementation of things like, 'k-deep confirmation rule', where users should treat a block as confirmed 
+only if it is buried deep enough under other blocks. Confirming a block means that the portion of the ledger up to that block is
+immutable.
+
 
 ````
 ```
@@ -122,10 +126,12 @@ it will always have the longest one. After 1 minute, of having nodes running , w
 ### Mining
 This implementation is of course a naive one and many problems still need to be solved.
 - The consensus algorithm is far more complex than the one implemented :-)
+- Variable mining difficulty is not implemented and is hard-coded in this implementation
 - How to manage different nodes running with different versions of this backend ? 
 - How to increase the complexity of the mining problem while nodes are running ?
 - Whenever a consensus is triggered, if a node see that the proposed blockchain is valid and longer that its own 
 blockchain it should stop mining 
+
 - ...
 
 In this implementation, all transactions in the pool are taken to be mined, instead of selecting some of them depending on some fee
